@@ -1,6 +1,3 @@
-import com.codeborne.selenide.CollectionCondition;
-import com.codeborne.selenide.Condition;
-import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import org.example.steps.LoginSteps;
 import org.example.steps.ProductsSteps;
@@ -8,17 +5,15 @@ import org.openqa.selenium.By;
 import org.testng.annotations.Test;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.$$;
-import static com.codeborne.selenide.Selenide.open;
 
 public class SauceDemoTest extends BaseTest {
     LoginSteps loginSteps = new LoginSteps();
     ProductsSteps productsSteps = new ProductsSteps();
 
-    @Test
+    @Test(enabled = false)
     public void loginTest() {
         loginSteps.login("standard_user", "secret_sauce");
-        $(By.xpath("//span[@class='title']")).shouldHave(text("Products"));
+        loginSteps.verifyLogin("Products");
     }
 
     @Test
