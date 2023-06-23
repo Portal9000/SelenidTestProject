@@ -5,8 +5,8 @@
 /.idea/
 .idea/*
 
-/.build/
-.build/*
+/build/
+build/*
 
 # Log file
 *.log
