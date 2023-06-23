@@ -15,8 +15,10 @@ public class BaseTest {
                 .screenshots(true)
                 .savePageSource(true)
                 .enableLogs(LogType.BROWSER, Level.ALL));
+        Configuration.browserSize = "1600x900";
         Configuration.browser =CHROME;
     }
+
     @BeforeMethod
     public void goToUrl() {
         open("https://www.saucedemo.com/");
