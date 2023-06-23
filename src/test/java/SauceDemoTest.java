@@ -10,11 +10,7 @@ import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
 import static com.codeborne.selenide.Selenide.open;
 
-public class SauceDemoTest {
-    @BeforeMethod
-    public void goToUrl() {
-        open("https://www.saucedemo.com/");
-    }
+public class SauceDemoTest extends BaseTest {
     public void login(String userName, String password) {
         $(By.id("user-name")).setValue(userName);
         $(By.id("password")).setValue(password);
@@ -48,12 +44,12 @@ public class SauceDemoTest {
                 .filter(Condition.text(productName))
                 .shouldHave(CollectionCondition.sizeGreaterThan(0));
     }
-//    @Test
-//    public void loginTest() {
-//        login("standard_user", "secret_sauce");
-//        $(By.xpath("//span[@class='title']")).shouldHave(text("Products"));
-//    }
 
+    @Test
+    public void loginTest() {
+        login("standard_user", "secret_sauce");
+        $(By.xpath("//span[@class='title']")).shouldHave(text("Products"));
+    }
     @Test public void addItemToCart() {
         login("standard_user", "secret_sauce");
         SelenideElement cheapestProduct = findCheapestPrice();
