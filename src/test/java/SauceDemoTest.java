@@ -1,10 +1,8 @@
 import com.codeborne.selenide.SelenideElement;
 import org.example.steps.LoginSteps;
 import org.example.steps.ProductsSteps;
-import org.openqa.selenium.By;
+import org.example.utils.Waiters;
 import org.testng.annotations.Test;
-import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Selenide.$;
 
 public class SauceDemoTest extends BaseTest {
     LoginSteps loginSteps = new LoginSteps();
@@ -23,6 +21,7 @@ public class SauceDemoTest extends BaseTest {
         String productName = cheapestProduct.find(".inventory_item_name").getText();
         productsSteps.addProductToCart(cheapestProduct);
         productsSteps.goToCart();
+        Waiters.sleep();
         productsSteps.verifyProductInCart(productName);
     }
 }
