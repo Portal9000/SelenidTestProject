@@ -5,6 +5,7 @@ import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import org.example.page.CartPage;
 import org.example.page.ProductsPage;
+import org.example.models.ProductData;
 
 public class ProductsSteps {
     ProductsPage productsPage = new ProductsPage();
@@ -36,5 +37,26 @@ public class ProductsSteps {
         cartPage.inventoryItemsNameText
                 .filter(Condition.text(productName))
                 .shouldHave(CollectionCondition.sizeGreaterThan(0));
+
+    }
+
+    public void clickFirstAddToCartButton() {
+        productsPage.firstAddToCartButton.click();
+    }
+
+    public ProductData setProductData(ProductData productData) {
+        productData.setProductName(productData.getProductName());
+        productData.setProductPrice(productData.getProductPrice());
+        productData.setProductDescription(productData.getProductDescription());
+        return productData;
+    }
+
+    public ProductData getProductData() {
+        ProductData productData = new ProductData();
+
+        productData.setProductName(cartPage.inventoryItemsNameText.get(0).getText());
+        productData.setProductPrice(cartPage.inventoryItemsPriceText.getText());
+        productData.setProductDescription(cartPage.inventoryItemsDescriptionText.getText());
+        return productData;
     }
 }
