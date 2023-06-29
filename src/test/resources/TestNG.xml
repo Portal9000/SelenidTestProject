@@ -2,7 +2,7 @@
 
 <suite name="MainTest" parallel="tests" thread-count="2">
 
-    <test name="1">
+    <test name="Login">
         <parameter name="startType" value="selenoid"/>
         <parameter name="browser" value="chrome"/>
         <parameter name="version" value="latest"/>
@@ -10,21 +10,18 @@
             <class name="SauceDemoTest">
                 <methods>
                     <include name="loginTest"/>
-                    <include name="addItemToCart"/>
-                    <include name="compareProducts"/>
                 </methods>
             </class>
         </classes>
     </test>
 
-    <test name="2">
+    <test name="Products">
         <parameter name="startType" value="selenoid"/>
         <parameter name="browser" value="chrome"/>
         <parameter name="version" value="latest"/>
         <classes>
             <class name="SauceDemoTest">
                 <methods>
-                    <include name="loginTest"/>
                     <include name="addItemToCart"/>
                     <include name="compareProducts"/>
                 </methods>
